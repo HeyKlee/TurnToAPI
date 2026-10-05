@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python syntax
+        run: |
+          python -m py_compile \
+            turn_to_api_server.py \
+            browser_web_adapter.py \
+            arena_model_registry.py \
+            turn_to_api_live_proxy.py
+      - name: Registry JSON
+        run: python -m json.tool arena_models_live.json >/dev/null
+      - name: Shell syntax
+        run: |
+          bash -n install.sh
+          bash -n install-macos.sh
+          bash -n scripts/start-turntoapi.sh
+          bash -n scripts/kill-turntoapi.sh
+
+  syntax-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell syntax
+        shell: powershell
+        run: |
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            (Resolve-Path '.\install-windows.ps1'),
+            [ref]$null,
+            [ref]$errors
+          ) | Out-Null
+          if ($errors) {
+            $errors | Format-List
+            exit 1
+          }
