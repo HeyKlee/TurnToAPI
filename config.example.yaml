@@ -1,0 +1,20 @@
+host: 127.0.0.1
+port: 8000
+
+arena:
+  base_url: https://arena.ai
+  headed: true
+  profile_dir: playwright_profiles/arena
+  navigation_timeout_seconds: 90
+  generation_timeout_seconds: 900
+  verification_timeout_seconds: 900
+
+chatgpt:
+  enabled: false
+  base_url: https://chatgpt.com
+  headed: true
+  profile_dir: playwright_profiles/chatgpt
+
+security:
+  suppress_challenge_text: true
+  allow_public_bind: false
