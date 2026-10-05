@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="\${TURNTOAPI_REPO:-https://github.com/HeyKlee/TurnToAPI.git}"
-INSTALL_DIR="\${TURNTOAPI_HOME:-$HOME/.local/share/turntoapi}"
+REPO_URL="${TURNTOAPI_REPO:-https://github.com/HeyKlee/TurnToAPI.git}"
+INSTALL_DIR="${TURNTOAPI_HOME:-$HOME/.local/share/turntoapi}"
 VENV="$INSTALL_DIR/.venv"
 
 echo "=========================================="
@@ -30,7 +30,6 @@ install_packages() {
 }
 
 install_packages
-
 mkdir -p "$(dirname "$INSTALL_DIR")"
 
 if [ -d "$INSTALL_DIR/.git" ]; then
@@ -56,11 +55,7 @@ if command -v apt-get >/dev/null 2>&1; then
   sudo "$VENV/bin/python" -m playwright install-deps firefox || true
 fi
 
-mkdir -p \
-  logs \
-  browser_debug \
-  playwright_profiles/arena \
-  playwright_profiles/chatgpt
+mkdir -p logs browser_debug playwright_profiles/arena playwright_profiles/chatgpt
 
 if [ ! -f config.yaml ]; then
   cp config.example.yaml config.yaml
@@ -85,16 +80,16 @@ cat > start-turntoapi.sh <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 
 HOST="$(cat .turntoapi-bind 2>/dev/null || printf '127.0.0.1')"
 
-export TURNTOAPI_WEBDRIVER_TIMEOUT="\${TURNTOAPI_WEBDRIVER_TIMEOUT:-900}"
-export TURNTOAPI_ARENA_GENERATION_TIMEOUT="\${TURNTOAPI_ARENA_GENERATION_TIMEOUT:-900}"
-export TURNTOAPI_CLOUDFLARE_AUTO_WAIT="\${TURNTOAPI_CLOUDFLARE_AUTO_WAIT:-180}"
-export TURNTOAPI_CLOUDFLARE_HUMAN_AFTER="\${TURNTOAPI_CLOUDFLARE_HUMAN_AFTER:-4}"
-export TURNTOAPI_CLOUDFLARE_STREAK_EXPIRY="\${TURNTOAPI_CLOUDFLARE_STREAK_EXPIRY:-900}"
+export TURNTOAPI_WEBDRIVER_TIMEOUT="${TURNTOAPI_WEBDRIVER_TIMEOUT:-900}"
+export TURNTOAPI_ARENA_GENERATION_TIMEOUT="${TURNTOAPI_ARENA_GENERATION_TIMEOUT:-900}"
+export TURNTOAPI_CLOUDFLARE_AUTO_WAIT="${TURNTOAPI_CLOUDFLARE_AUTO_WAIT:-180}"
+export TURNTOAPI_CLOUDFLARE_HUMAN_AFTER="${TURNTOAPI_CLOUDFLARE_HUMAN_AFTER:-4}"
+export TURNTOAPI_CLOUDFLARE_STREAK_EXPIRY="${TURNTOAPI_CLOUDFLARE_STREAK_EXPIRY:-900}"
 
 exec "$ROOT/.venv/bin/python" \
   "$ROOT/turn_to_api_server.py" \
@@ -106,7 +101,7 @@ EOF
 cat > kill-turntoapi.sh <<'EOF'
 #!/usr/bin/env bash
 set +e
-ROOT="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if command -v systemctl >/dev/null 2>&1; then
   systemctl --user stop turntoapi.service >/dev/null 2>&1 || true
@@ -129,9 +124,7 @@ chmod +x start-turntoapi.sh kill-turntoapi.sh install.sh
 if command -v systemctl >/dev/null 2>&1 && systemctl --user show-environment >/dev/null 2>&1; then
   mkdir -p "$HOME/.config/systemd/user"
 
-  systemctl --user import-environment \
-    DISPLAY WAYLAND_DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS \
-    >/dev/null 2>&1 || true
+  systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS >/dev/null 2>&1 || true
 
   cat > "$HOME/.config/systemd/user/turntoapi.service" <<EOF
 [Unit]
@@ -157,9 +150,7 @@ EOF
 else
   echo
   echo "systemd user service unavailable; starting TurnToAPI in the background."
-  nohup "$INSTALL_DIR/start-turntoapi.sh" \
-    >"$INSTALL_DIR/logs/turntoapi.stdout.log" \
-    2>"$INSTALL_DIR/logs/turntoapi.stderr.log" &
+  nohup "$INSTALL_DIR/start-turntoapi.sh" >"$INSTALL_DIR/logs/turntoapi.stdout.log" 2>"$INSTALL_DIR/logs/turntoapi.stderr.log" &
 fi
 
 echo
