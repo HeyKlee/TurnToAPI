@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_URL="https://github.com/HeyKlee/TurnToAPI.git"
-INSTALL_DIR="\${TURNTOAPI_HOME:-$HOME/Library/Application Support/TurnToAPI}"
+INSTALL_DIR="${TURNTOAPI_HOME:-$HOME/Library/Application Support/TurnToAPI}"
 VENV="$INSTALL_DIR/.venv"
 
 echo "=========================================="
@@ -64,7 +64,7 @@ printf '%s\n' "$HOST" > .turntoapi-bind
 cat > start-turntoapi.sh <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOST="$(cat "$ROOT/.turntoapi-bind")"
 exec "$ROOT/.venv/bin/python" \
   "$ROOT/turn_to_api_server.py" \
@@ -76,7 +76,7 @@ EOF
 cat > kill-turntoapi.sh <<'EOF'
 #!/usr/bin/env bash
 set +e
-ROOT="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 pkill -f "$ROOT/turn_to_api_server.py" 2>/dev/null || true
 pkill -f "$ROOT/turn_to_api_live_proxy.py" 2>/dev/null || true
 echo "TurnToAPI stopped."
