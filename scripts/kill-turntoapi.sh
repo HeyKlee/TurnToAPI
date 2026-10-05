@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +e
 
-ROOT="$(cd "$(dirname "\${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 if command -v systemctl >/dev/null 2>&1; then
   systemctl --user stop turntoapi.service >/dev/null 2>&1 || true
