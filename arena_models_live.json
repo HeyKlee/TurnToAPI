@@ -1,41 +1,29 @@
 {
-  "schema_version": 1,
-  "generated_from": "Arena picker snapshot; routes are verified lazily",
+  "generated": 1791213297,
+  "source": "runtime-route-verification",
   "text": [
     {
-      "id": "gemini-3-flash",
-      "label": "gemini-3-flash",
-      "route": "gemini-3-flash",
+      "id": "claude-sonnet-5-high",
+      "label": "claude-sonnet-5-high",
+      "route": "claude-sonnet-5-high",
       "verified": false
     },
     {
-      "id": "glm-5.1",
-      "label": "glm-5.1",
-      "route": "glm-5.1",
+      "id": "deepseek-v4.1-flash-max",
+      "label": "deepseek-v4.1-flash-max",
+      "route": "deepseek-v4.1-flash-max",
+      "verified": true
+    },
+    {
+      "id": "devstral-medium-2507",
+      "label": "devstral-medium-2507",
+      "route": "devstral-medium-2507",
       "verified": false
     },
     {
-      "id": "qwen3.5-397b-a17b",
-      "label": "qwen3.5-397b-a17b",
-      "route": "qwen3.5-397b-a17b",
-      "verified": false
-    },
-    {
-      "id": "gemini-3.6-flash",
-      "label": "gemini-3.6-flash",
-      "route": "gemini-3.6-flash",
-      "verified": false
-    },
-    {
-      "id": "minimax-m3",
-      "label": "minimax-m3",
-      "route": "minimax-m3",
-      "verified": false
-    },
-    {
-      "id": "kimi-k2.7-code",
-      "label": "kimi-k2.7-code",
-      "route": "kimi-k2.7-code",
+      "id": "gemini-2.5-pro",
+      "label": "gemini-2.5-pro",
+      "route": "gemini-2.5-pro",
       "verified": false
     },
     {
@@ -45,69 +33,9 @@
       "verified": false
     },
     {
-      "id": "gemini-3.8-flash-medium",
-      "label": "gemini-3.8-flash-medium",
-      "route": "gemini-3.8-flash-medium",
-      "verified": false
-    },
-    {
-      "id": "seed-2.1-pro-preview",
-      "label": "seed-2.1-pro-preview",
-      "route": "seed-2.1-pro-preview",
-      "verified": false
-    },
-    {
-      "id": "qwen3-max-thinking",
-      "label": "qwen3-max-thinking",
-      "route": "qwen3-max-thinking",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.2-high",
-      "label": "gpt-5.2-high",
-      "route": "gpt-5.2-high",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-codex-max",
-      "label": "gpt-5.1-codex-max",
-      "route": "gpt-5.1-codex-max",
-      "verified": false
-    },
-    {
-      "id": "qwen3.6-plus-preview",
-      "label": "qwen3.6-plus-preview",
-      "route": "qwen3.6-plus-preview",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.2",
-      "label": "gpt-5.2",
-      "route": "gpt-5.2",
-      "verified": false
-    },
-    {
-      "id": "grok-build-0.1",
-      "label": "grok-build-0.1",
-      "route": "grok-build-0.1",
-      "verified": false
-    },
-    {
-      "id": "qwen3.6-plus",
-      "label": "qwen3.6-plus",
-      "route": "qwen3.6-plus",
-      "verified": false
-    },
-    {
       "id": "gemini-3.5-flash",
       "label": "gemini-3.5-flash",
       "route": "gemini-3.5-flash",
-      "verified": false
-    },
-    {
-      "id": "glm-5.2",
-      "label": "glm-5.2",
-      "route": "glm-5.2",
       "verified": false
     },
     {
@@ -117,27 +45,111 @@
       "verified": false
     },
     {
-      "id": "inkling-medium",
-      "label": "inkling-medium",
-      "route": "inkling-medium",
+      "id": "gemini-3.5-flash-lite",
+      "label": "gemini-3.5-flash-lite",
+      "route": "gemini-3.5-flash-lite",
       "verified": false
     },
     {
-      "id": "grok-4.6-high",
-      "label": "grok-4.6-high",
-      "route": "grok-4.6-high",
+      "id": "gemini-3.6-flash",
+      "label": "gemini-3.6-flash",
+      "route": "gemini-3.6-flash",
       "verified": false
     },
     {
-      "id": "inkling-small-low",
-      "label": "inkling-small-low",
-      "route": "inkling-small-low",
+      "id": "gemini-3.8-flash-medium",
+      "label": "gemini-3.8-flash-medium",
+      "route": "gemini-3.8-flash-medium",
       "verified": false
     },
     {
-      "id": "inkling-low",
-      "label": "inkling-low",
-      "route": "inkling-low",
+      "id": "gemini-3-flash",
+      "label": "gemini-3-flash",
+      "route": "gemini-3-flash",
+      "verified": true
+    },
+    {
+      "id": "gemma-4-31b",
+      "label": "gemma-4-31b",
+      "route": "gemma-4-31b",
+      "verified": false
+    },
+    {
+      "id": "glm-5",
+      "label": "glm-5",
+      "route": "glm-5",
+      "verified": false
+    },
+    {
+      "id": "glm-5.1",
+      "label": "glm-5.1",
+      "route": "glm-5.1",
+      "verified": false
+    },
+    {
+      "id": "glm-5.2",
+      "label": "glm-5.2",
+      "route": "glm-5.2",
+      "verified": false
+    },
+    {
+      "id": "glm-5v-turbo",
+      "label": "glm-5v-turbo",
+      "route": "glm-5v-turbo",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-codex-max",
+      "label": "gpt-5.1-codex-max",
+      "route": "gpt-5.1-codex-max",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-codex-mini",
+      "label": "gpt-5.1-codex-mini",
+      "route": "gpt-5.1-codex-mini",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-high",
+      "label": "gpt-5.1-high",
+      "route": "gpt-5.1-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.2",
+      "label": "gpt-5.2",
+      "route": "gpt-5.2",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.2-high",
+      "label": "gpt-5.2-high",
+      "route": "gpt-5.2-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "label": "gpt-5.3-codex",
+      "route": "gpt-5.3-codex",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.4-mini-high",
+      "label": "gpt-5.4-mini-high",
+      "route": "gpt-5.4-mini-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5-medium",
+      "label": "gpt-5-medium",
+      "route": "gpt-5-medium",
+      "verified": false
+    },
+    {
+      "id": "granite-4.1-8b",
+      "label": "granite-4.1-8b",
+      "route": "granite-4.1-8b",
       "verified": false
     },
     {
@@ -153,9 +165,39 @@
       "verified": false
     },
     {
-      "id": "deepseek-v4.1-flash-max",
-      "label": "deepseek-v4.1-flash-max",
-      "route": "deepseek-v4.1-flash-max",
+      "id": "grok-4.6-high",
+      "label": "grok-4.6-high",
+      "route": "grok-4.6-high",
+      "verified": false
+    },
+    {
+      "id": "grok-build-0.1",
+      "label": "grok-build-0.1",
+      "route": "grok-build-0.1",
+      "verified": false
+    },
+    {
+      "id": "inkling-low",
+      "label": "inkling-low",
+      "route": "inkling-low",
+      "verified": false
+    },
+    {
+      "id": "inkling-medium",
+      "label": "inkling-medium",
+      "route": "inkling-medium",
+      "verified": false
+    },
+    {
+      "id": "inkling-small",
+      "label": "inkling-small",
+      "route": "inkling-small",
+      "verified": false
+    },
+    {
+      "id": "inkling-small-low",
+      "label": "inkling-small-low",
+      "route": "inkling-small-low",
       "verified": false
     },
     {
@@ -165,21 +207,9 @@
       "verified": false
     },
     {
-      "id": "qwen3.6-27b",
-      "label": "qwen3.6-27b",
-      "route": "qwen3.6-27b",
-      "verified": false
-    },
-    {
-      "id": "gemma-4-31b",
-      "label": "gemma-4-31b",
-      "route": "gemma-4-31b",
-      "verified": true
-    },
-    {
-      "id": "claude-sonnet-5-high",
-      "label": "claude-sonnet-5-high",
-      "route": "claude-sonnet-5-high",
+      "id": "kimi-k2.7-code",
+      "label": "kimi-k2.7-code",
+      "route": "kimi-k2.7-code",
       "verified": false
     },
     {
@@ -189,45 +219,15 @@
       "verified": false
     },
     {
-      "id": "granite-4.1-8b",
-      "label": "granite-4.1-8b",
-      "route": "granite-4.1-8b",
-      "verified": false
-    },
-    {
       "id": "mercury-2",
       "label": "mercury-2",
       "route": "mercury-2",
       "verified": false
     },
     {
-      "id": "devstral-medium-2507",
-      "label": "devstral-medium-2507",
-      "route": "devstral-medium-2507",
-      "verified": false
-    },
-    {
-      "id": "glm-5",
-      "label": "glm-5",
-      "route": "glm-5",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-high",
-      "label": "gpt-5.1-high",
-      "route": "gpt-5.1-high",
-      "verified": false
-    },
-    {
       "id": "mimo-v2.5",
       "label": "mimo-v2.5",
       "route": "mimo-v2.5",
-      "verified": false
-    },
-    {
-      "id": "muse-glimmer",
-      "label": "muse-glimmer",
-      "route": "muse-glimmer",
       "verified": false
     },
     {
@@ -243,33 +243,15 @@
       "verified": false
     },
     {
-      "id": "qwen3-coder-480b-a35b-instruct",
-      "label": "qwen3-coder-480b-a35b-instruct",
-      "route": "qwen3-coder-480b-a35b-instruct",
+      "id": "minimax-m2.7",
+      "label": "minimax-m2.7",
+      "route": "minimax-m2.7",
       "verified": false
     },
     {
-      "id": "qwen3.5-35b-a3b-code",
-      "label": "qwen3.5-35b-a3b-code",
-      "route": "qwen3.5-35b-a3b-code",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-codex-mini",
-      "label": "gpt-5.1-codex-mini",
-      "route": "gpt-5.1-codex-mini",
-      "verified": false
-    },
-    {
-      "id": "qwen3.5-flash",
-      "label": "qwen3.5-flash",
-      "route": "qwen3.5-flash",
-      "verified": false
-    },
-    {
-      "id": "trinity-large-thinking",
-      "label": "trinity-large-thinking",
-      "route": "trinity-large-thinking",
+      "id": "minimax-m3",
+      "label": "minimax-m3",
+      "route": "minimax-m3",
       "verified": false
     },
     {
@@ -279,51 +261,69 @@
       "verified": false
     },
     {
-      "id": "gemini-2.5-pro",
-      "label": "gemini-2.5-pro",
-      "route": "gemini-2.5-pro",
+      "id": "muse-glimmer",
+      "label": "muse-glimmer",
+      "route": "muse-glimmer",
       "verified": false
     },
     {
-      "id": "gemini-3.5-flash-lite",
-      "label": "gemini-3.5-flash-lite",
-      "route": "gemini-3.5-flash-lite",
+      "id": "qwen3.5-35b-a3b-code",
+      "label": "qwen3.5-35b-a3b-code",
+      "route": "qwen3.5-35b-a3b-code",
       "verified": false
     },
     {
-      "id": "gpt-5-medium",
-      "label": "gpt-5-medium",
-      "route": "gpt-5-medium",
+      "id": "qwen3.5-397b-a17b",
+      "label": "qwen3.5-397b-a17b",
+      "route": "qwen3.5-397b-a17b",
       "verified": false
     },
     {
-      "id": "inkling-small",
-      "label": "inkling-small",
-      "route": "inkling-small",
+      "id": "qwen3.5-flash",
+      "label": "qwen3.5-flash",
+      "route": "qwen3.5-flash",
       "verified": false
     },
     {
-      "id": "gpt-5.3-codex",
-      "label": "gpt-5.3-codex",
-      "route": "gpt-5.3-codex",
+      "id": "qwen3.6-27b",
+      "label": "qwen3.6-27b",
+      "route": "qwen3.6-27b",
       "verified": false
     },
     {
-      "id": "glm-5v-turbo",
-      "label": "glm-5v-turbo",
-      "route": "glm-5v-turbo",
+      "id": "qwen3.6-plus",
+      "label": "qwen3.6-plus",
+      "route": "qwen3.6-plus",
       "verified": false
     },
     {
-      "id": "gpt-5.4-mini-high",
-      "label": "gpt-5.4-mini-high",
-      "route": "gpt-5.4-mini-high",
+      "id": "qwen3.6-plus-preview",
+      "label": "qwen3.6-plus-preview",
+      "route": "qwen3.6-plus-preview",
       "verified": false
     },
     {
-      "id": "minimax-m2.7",
-      "label": "minimax-m2.7",
-      "route": "minimax-m2.7",
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "label": "qwen3-coder-480b-a35b-instruct",
+      "route": "qwen3-coder-480b-a35b-instruct",
+      "verified": false
+    },
+    {
+      "id": "qwen3-max-thinking",
+      "label": "qwen3-max-thinking",
+      "route": "qwen3-max-thinking",
+      "verified": false
+    },
+    {
+      "id": "seed-2.1-pro-preview",
+      "label": "seed-2.1-pro-preview",
+      "route": "seed-2.1-pro-preview",
+      "verified": false
+    },
+    {
+      "id": "trinity-large-thinking",
+      "label": "trinity-large-thinking",
+      "route": "trinity-large-thinking",
       "verified": false
     },
     {
@@ -341,39 +341,27 @@
   ],
   "code": [
     {
-      "id": "gemini-3-flash",
-      "label": "gemini-3-flash",
-      "route": "gemini-3-flash",
+      "id": "claude-sonnet-5-high",
+      "label": "claude-sonnet-5-high",
+      "route": "claude-sonnet-5-high",
       "verified": false
     },
     {
-      "id": "glm-5.1",
-      "label": "glm-5.1",
-      "route": "glm-5.1",
+      "id": "deepseek-v4.1-flash-max",
+      "label": "deepseek-v4.1-flash-max",
+      "route": "deepseek-v4.1-flash-max",
+      "verified": true
+    },
+    {
+      "id": "devstral-medium-2507",
+      "label": "devstral-medium-2507",
+      "route": "devstral-medium-2507",
       "verified": false
     },
     {
-      "id": "qwen3.5-397b-a17b",
-      "label": "qwen3.5-397b-a17b",
-      "route": "qwen3.5-397b-a17b",
-      "verified": false
-    },
-    {
-      "id": "gemini-3.6-flash",
-      "label": "gemini-3.6-flash",
-      "route": "gemini-3.6-flash",
-      "verified": false
-    },
-    {
-      "id": "minimax-m3",
-      "label": "minimax-m3",
-      "route": "minimax-m3",
-      "verified": false
-    },
-    {
-      "id": "kimi-k2.7-code",
-      "label": "kimi-k2.7-code",
-      "route": "kimi-k2.7-code",
+      "id": "gemini-2.5-pro",
+      "label": "gemini-2.5-pro",
+      "route": "gemini-2.5-pro",
       "verified": false
     },
     {
@@ -383,69 +371,9 @@
       "verified": false
     },
     {
-      "id": "gemini-3.8-flash-medium",
-      "label": "gemini-3.8-flash-medium",
-      "route": "gemini-3.8-flash-medium",
-      "verified": false
-    },
-    {
-      "id": "seed-2.1-pro-preview",
-      "label": "seed-2.1-pro-preview",
-      "route": "seed-2.1-pro-preview",
-      "verified": false
-    },
-    {
-      "id": "qwen3-max-thinking",
-      "label": "qwen3-max-thinking",
-      "route": "qwen3-max-thinking",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.2-high",
-      "label": "gpt-5.2-high",
-      "route": "gpt-5.2-high",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-codex-max",
-      "label": "gpt-5.1-codex-max",
-      "route": "gpt-5.1-codex-max",
-      "verified": false
-    },
-    {
-      "id": "qwen3.6-plus-preview",
-      "label": "qwen3.6-plus-preview",
-      "route": "qwen3.6-plus-preview",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.2",
-      "label": "gpt-5.2",
-      "route": "gpt-5.2",
-      "verified": false
-    },
-    {
-      "id": "grok-build-0.1",
-      "label": "grok-build-0.1",
-      "route": "grok-build-0.1",
-      "verified": false
-    },
-    {
-      "id": "qwen3.6-plus",
-      "label": "qwen3.6-plus",
-      "route": "qwen3.6-plus",
-      "verified": false
-    },
-    {
       "id": "gemini-3.5-flash",
       "label": "gemini-3.5-flash",
       "route": "gemini-3.5-flash",
-      "verified": false
-    },
-    {
-      "id": "glm-5.2",
-      "label": "glm-5.2",
-      "route": "glm-5.2",
       "verified": false
     },
     {
@@ -455,27 +383,111 @@
       "verified": false
     },
     {
-      "id": "inkling-medium",
-      "label": "inkling-medium",
-      "route": "inkling-medium",
+      "id": "gemini-3.5-flash-lite",
+      "label": "gemini-3.5-flash-lite",
+      "route": "gemini-3.5-flash-lite",
       "verified": false
     },
     {
-      "id": "grok-4.6-high",
-      "label": "grok-4.6-high",
-      "route": "grok-4.6-high",
+      "id": "gemini-3.6-flash",
+      "label": "gemini-3.6-flash",
+      "route": "gemini-3.6-flash",
       "verified": false
     },
     {
-      "id": "inkling-small-low",
-      "label": "inkling-small-low",
-      "route": "inkling-small-low",
+      "id": "gemini-3.8-flash-medium",
+      "label": "gemini-3.8-flash-medium",
+      "route": "gemini-3.8-flash-medium",
       "verified": false
     },
     {
-      "id": "inkling-low",
-      "label": "inkling-low",
-      "route": "inkling-low",
+      "id": "gemini-3-flash",
+      "label": "gemini-3-flash",
+      "route": "gemini-3-flash",
+      "verified": false
+    },
+    {
+      "id": "gemma-4-31b",
+      "label": "gemma-4-31b",
+      "route": "gemma-4-31b",
+      "verified": false
+    },
+    {
+      "id": "glm-5",
+      "label": "glm-5",
+      "route": "glm-5",
+      "verified": true
+    },
+    {
+      "id": "glm-5.1",
+      "label": "glm-5.1",
+      "route": "glm-5.1",
+      "verified": false
+    },
+    {
+      "id": "glm-5.2",
+      "label": "glm-5.2",
+      "route": "glm-5.2",
+      "verified": false
+    },
+    {
+      "id": "glm-5v-turbo",
+      "label": "glm-5v-turbo",
+      "route": "glm-5v-turbo",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-codex-max",
+      "label": "gpt-5.1-codex-max",
+      "route": "gpt-5.1-codex-max",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-codex-mini",
+      "label": "gpt-5.1-codex-mini",
+      "route": "gpt-5.1-codex-mini",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.1-high",
+      "label": "gpt-5.1-high",
+      "route": "gpt-5.1-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.2",
+      "label": "gpt-5.2",
+      "route": "gpt-5.2",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.2-high",
+      "label": "gpt-5.2-high",
+      "route": "gpt-5.2-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "label": "gpt-5.3-codex",
+      "route": "gpt-5.3-codex",
+      "verified": false
+    },
+    {
+      "id": "gpt-5.4-mini-high",
+      "label": "gpt-5.4-mini-high",
+      "route": "gpt-5.4-mini-high",
+      "verified": false
+    },
+    {
+      "id": "gpt-5-medium",
+      "label": "gpt-5-medium",
+      "route": "gpt-5-medium",
+      "verified": false
+    },
+    {
+      "id": "granite-4.1-8b",
+      "label": "granite-4.1-8b",
+      "route": "granite-4.1-8b",
       "verified": false
     },
     {
@@ -491,9 +503,39 @@
       "verified": false
     },
     {
-      "id": "deepseek-v4.1-flash-max",
-      "label": "deepseek-v4.1-flash-max",
-      "route": "deepseek-v4.1-flash-max",
+      "id": "grok-4.6-high",
+      "label": "grok-4.6-high",
+      "route": "grok-4.6-high",
+      "verified": false
+    },
+    {
+      "id": "grok-build-0.1",
+      "label": "grok-build-0.1",
+      "route": "grok-build-0.1",
+      "verified": false
+    },
+    {
+      "id": "inkling-low",
+      "label": "inkling-low",
+      "route": "inkling-low",
+      "verified": false
+    },
+    {
+      "id": "inkling-medium",
+      "label": "inkling-medium",
+      "route": "inkling-medium",
+      "verified": false
+    },
+    {
+      "id": "inkling-small",
+      "label": "inkling-small",
+      "route": "inkling-small",
+      "verified": false
+    },
+    {
+      "id": "inkling-small-low",
+      "label": "inkling-small-low",
+      "route": "inkling-small-low",
       "verified": false
     },
     {
@@ -503,21 +545,9 @@
       "verified": false
     },
     {
-      "id": "qwen3.6-27b",
-      "label": "qwen3.6-27b",
-      "route": "qwen3.6-27b",
-      "verified": false
-    },
-    {
-      "id": "gemma-4-31b",
-      "label": "gemma-4-31b",
-      "route": "gemma-4-31b",
-      "verified": true
-    },
-    {
-      "id": "claude-sonnet-5-high",
-      "label": "claude-sonnet-5-high",
-      "route": "claude-sonnet-5-high",
+      "id": "kimi-k2.7-code",
+      "label": "kimi-k2.7-code",
+      "route": "kimi-k2.7-code",
       "verified": false
     },
     {
@@ -527,45 +557,15 @@
       "verified": false
     },
     {
-      "id": "granite-4.1-8b",
-      "label": "granite-4.1-8b",
-      "route": "granite-4.1-8b",
-      "verified": false
-    },
-    {
       "id": "mercury-2",
       "label": "mercury-2",
       "route": "mercury-2",
       "verified": false
     },
     {
-      "id": "devstral-medium-2507",
-      "label": "devstral-medium-2507",
-      "route": "devstral-medium-2507",
-      "verified": false
-    },
-    {
-      "id": "glm-5",
-      "label": "glm-5",
-      "route": "glm-5",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-high",
-      "label": "gpt-5.1-high",
-      "route": "gpt-5.1-high",
-      "verified": false
-    },
-    {
       "id": "mimo-v2.5",
       "label": "mimo-v2.5",
       "route": "mimo-v2.5",
-      "verified": false
-    },
-    {
-      "id": "muse-glimmer",
-      "label": "muse-glimmer",
-      "route": "muse-glimmer",
       "verified": false
     },
     {
@@ -581,33 +581,15 @@
       "verified": false
     },
     {
-      "id": "qwen3-coder-480b-a35b-instruct",
-      "label": "qwen3-coder-480b-a35b-instruct",
-      "route": "qwen3-coder-480b-a35b-instruct",
+      "id": "minimax-m2.7",
+      "label": "minimax-m2.7",
+      "route": "minimax-m2.7",
       "verified": false
     },
     {
-      "id": "qwen3.5-35b-a3b-code",
-      "label": "qwen3.5-35b-a3b-code",
-      "route": "qwen3.5-35b-a3b-code",
-      "verified": false
-    },
-    {
-      "id": "gpt-5.1-codex-mini",
-      "label": "gpt-5.1-codex-mini",
-      "route": "gpt-5.1-codex-mini",
-      "verified": false
-    },
-    {
-      "id": "qwen3.5-flash",
-      "label": "qwen3.5-flash",
-      "route": "qwen3.5-flash",
-      "verified": false
-    },
-    {
-      "id": "trinity-large-thinking",
-      "label": "trinity-large-thinking",
-      "route": "trinity-large-thinking",
+      "id": "minimax-m3",
+      "label": "minimax-m3",
+      "route": "minimax-m3",
       "verified": false
     },
     {
@@ -617,51 +599,69 @@
       "verified": false
     },
     {
-      "id": "gemini-2.5-pro",
-      "label": "gemini-2.5-pro",
-      "route": "gemini-2.5-pro",
+      "id": "muse-glimmer",
+      "label": "muse-glimmer",
+      "route": "muse-glimmer",
       "verified": false
     },
     {
-      "id": "gemini-3.5-flash-lite",
-      "label": "gemini-3.5-flash-lite",
-      "route": "gemini-3.5-flash-lite",
+      "id": "qwen3.5-35b-a3b-code",
+      "label": "qwen3.5-35b-a3b-code",
+      "route": "qwen3.5-35b-a3b-code",
       "verified": false
     },
     {
-      "id": "gpt-5-medium",
-      "label": "gpt-5-medium",
-      "route": "gpt-5-medium",
+      "id": "qwen3.5-397b-a17b",
+      "label": "qwen3.5-397b-a17b",
+      "route": "qwen3.5-397b-a17b",
       "verified": false
     },
     {
-      "id": "inkling-small",
-      "label": "inkling-small",
-      "route": "inkling-small",
+      "id": "qwen3.5-flash",
+      "label": "qwen3.5-flash",
+      "route": "qwen3.5-flash",
       "verified": false
     },
     {
-      "id": "gpt-5.3-codex",
-      "label": "gpt-5.3-codex",
-      "route": "gpt-5.3-codex",
+      "id": "qwen3.6-27b",
+      "label": "qwen3.6-27b",
+      "route": "qwen3.6-27b",
       "verified": false
     },
     {
-      "id": "glm-5v-turbo",
-      "label": "glm-5v-turbo",
-      "route": "glm-5v-turbo",
+      "id": "qwen3.6-plus",
+      "label": "qwen3.6-plus",
+      "route": "qwen3.6-plus",
       "verified": false
     },
     {
-      "id": "gpt-5.4-mini-high",
-      "label": "gpt-5.4-mini-high",
-      "route": "gpt-5.4-mini-high",
+      "id": "qwen3.6-plus-preview",
+      "label": "qwen3.6-plus-preview",
+      "route": "qwen3.6-plus-preview",
       "verified": false
     },
     {
-      "id": "minimax-m2.7",
-      "label": "minimax-m2.7",
-      "route": "minimax-m2.7",
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "label": "qwen3-coder-480b-a35b-instruct",
+      "route": "qwen3-coder-480b-a35b-instruct",
+      "verified": false
+    },
+    {
+      "id": "qwen3-max-thinking",
+      "label": "qwen3-max-thinking",
+      "route": "qwen3-max-thinking",
+      "verified": false
+    },
+    {
+      "id": "seed-2.1-pro-preview",
+      "label": "seed-2.1-pro-preview",
+      "route": "seed-2.1-pro-preview",
+      "verified": false
+    },
+    {
+      "id": "trinity-large-thinking",
+      "label": "trinity-large-thinking",
+      "route": "trinity-large-thinking",
       "verified": false
     },
     {
