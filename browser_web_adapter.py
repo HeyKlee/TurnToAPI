@@ -426,13 +426,18 @@ class _BrowserWorker:
 
         initial = self._arena_snapshot(page)
         initial_count = int(initial.get("cardCount", 0))
+        baseline_reasoning = _clean_text(
+            str(initial.get("reasoning") or ""),
+            reasoning=True,
+        )
+        baseline_content = _clean_text(str(initial.get("content") or ""))
 
         self._submit_prompt(page, prompt)
 
         timeout = float(settings.get("generation_timeout_seconds", 900))
         deadline = time.monotonic() + timeout
-        last_reasoning = ""
-        last_content = ""
+        last_reasoning = baseline_reasoning
+        last_content = baseline_content
         stable_since: float | None = None
         saw_response = False
 
@@ -448,8 +453,16 @@ class _BrowserWorker:
             )
             content = _clean_text(str(snap.get("content") or ""))
 
-            if count > initial_count or reasoning or content:
-                saw_response = True
+            response_started = (
+                count > initial_count
+                or reasoning != baseline_reasoning
+                or content != baseline_content
+            )
+            if not response_started:
+                time.sleep(0.06)
+                continue
+
+            saw_response = True
 
             if callback and (reasoning != last_reasoning or content != last_content):
                 callback(reasoning, content)
@@ -459,7 +472,7 @@ class _BrowserWorker:
                 last_reasoning = reasoning
                 last_content = content
                 stable_since = time.monotonic()
-            elif saw_response and stable_since is None:
+            elif stable_since is None:
                 stable_since = time.monotonic()
 
             generating = bool(snap.get("generating"))
