@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
-import os
 import queue
 import threading
 import time
@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Iterator
 
 import uvicorn
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse, StreamingResponse
 
 from arena_model_registry import list_models
@@ -153,10 +153,7 @@ def health() -> dict[str, Any]:
 
 @app.get("/v1/models")
 def models() -> dict[str, Any]:
-    return {
-        "object": "list",
-        "data": _model_cards(),
-    }
+    return {"object": "list", "data": _model_cards()}
 
 
 @app.get("/__turntoapi/live-status")
@@ -173,46 +170,7 @@ def live_status() -> dict[str, Any]:
 
 
 @app.post("/v1/chat/completions")
-def chat_completions(request: Request):
-    try:
-        payload = json.loads(request._body.decode("utf-8")) if hasattr(request, "_body") else None
-    except Exception:
-        payload = None
-
-    # FastAPI Request does not guarantee a pre-populated private _body.
-    if payload is None:
-        raise HTTPException(
-            status_code=500,
-            detail="Internal request-body state was unavailable.",
-        )
-
-
-@app.middleware("http")
-async def cache_body(request: Request, call_next):
-    if request.method in {"POST", "PUT", "PATCH"}:
-        request._body = await request.body()
-    return await call_next(request)
-
-
-# Replace the placeholder route after middleware declaration so request._body
-# is always populated without mixing async browser work into the endpoint.
-app.router.routes = [
-    route
-    for route in app.router.routes
-    if not (
-        getattr(route, "path", None) == "/v1/chat/completions"
-        and "POST" in getattr(route, "methods", set())
-    )
-]
-
-
-@app.post("/v1/chat/completions")
-def chat_completions_real(request: Request):
-    try:
-        payload = json.loads(request._body.decode("utf-8"))
-    except Exception as exc:
-        raise HTTPException(status_code=400, detail=f"Invalid JSON: {exc}")
-
+async def chat_completions(payload: dict[str, Any]):
     model = str(payload.get("model") or "").strip()
     messages = payload.get("messages") or []
     stream = bool(payload.get("stream", False))
@@ -220,7 +178,10 @@ def chat_completions_real(request: Request):
     if not model:
         raise HTTPException(status_code=400, detail="model is required.")
     if not isinstance(messages, list) or not messages:
-        raise HTTPException(status_code=400, detail="messages must be a non-empty list.")
+        raise HTTPException(
+            status_code=400,
+            detail="messages must be a non-empty list.",
+        )
 
     try:
         adapter = _resolve_adapter(model)
@@ -231,9 +192,12 @@ def chat_completions_real(request: Request):
 
     if not stream:
         try:
-            result = adapter.complete(messages)
+            result = await asyncio.to_thread(adapter.complete, messages)
         except Exception as exc:
-            raise HTTPException(status_code=502, detail=f"{type(exc).__name__}: {exc}")
+            raise HTTPException(
+                status_code=502,
+                detail=f"{type(exc).__name__}: {exc}",
+            )
         return JSONResponse(_completion_payload(completion_id, model, result))
 
     def event_stream() -> Iterator[str]:
@@ -252,12 +216,11 @@ def chat_completions_real(request: Request):
             finally:
                 finished.set()
 
-        thread = threading.Thread(
+        threading.Thread(
             target=run,
             name="TurnToAPI-Completion",
             daemon=True,
-        )
-        thread.start()
+        ).start()
 
         yield _chunk(
             completion_id,
@@ -274,7 +237,6 @@ def chat_completions_real(request: Request):
             except queue.Empty:
                 if finished.is_set():
                     break
-                # SSE comment keeps intermediaries from buffering/closing.
                 yield ": keep-alive\n\n"
                 continue
 
@@ -284,28 +246,28 @@ def chat_completions_real(request: Request):
                 reasoning = str(event[1] or "")
                 content = str(event[2] or "")
 
-                if reasoning.startswith(previous_reasoning):
-                    addition = reasoning[len(previous_reasoning) :]
-                else:
-                    addition = reasoning
+                reasoning_add = (
+                    reasoning[len(previous_reasoning) :]
+                    if reasoning.startswith(previous_reasoning)
+                    else reasoning
+                )
+                content_add = (
+                    content[len(previous_content) :]
+                    if content.startswith(previous_content)
+                    else content
+                )
 
-                if addition:
+                if reasoning_add:
                     yield _chunk(
                         completion_id,
                         model,
-                        delta={"reasoning_content": addition},
+                        delta={"reasoning_content": reasoning_add},
                     )
-
-                if content.startswith(previous_content):
-                    addition = content[len(previous_content) :]
-                else:
-                    addition = content
-
-                if addition:
+                if content_add:
                     yield _chunk(
                         completion_id,
                         model,
-                        delta={"content": addition},
+                        delta={"content": content_add},
                     )
 
                 previous_reasoning = reasoning
@@ -315,28 +277,28 @@ def chat_completions_real(request: Request):
             if kind == "done":
                 result: BrowserResult = event[1]
 
-                if result.reasoning_content.startswith(previous_reasoning):
-                    extra_reasoning = result.reasoning_content[len(previous_reasoning) :]
-                else:
-                    extra_reasoning = result.reasoning_content
+                reasoning_add = (
+                    result.reasoning_content[len(previous_reasoning) :]
+                    if result.reasoning_content.startswith(previous_reasoning)
+                    else result.reasoning_content
+                )
+                content_add = (
+                    result.content[len(previous_content) :]
+                    if result.content.startswith(previous_content)
+                    else result.content
+                )
 
-                if extra_reasoning:
+                if reasoning_add:
                     yield _chunk(
                         completion_id,
                         model,
-                        delta={"reasoning_content": extra_reasoning},
+                        delta={"reasoning_content": reasoning_add},
                     )
-
-                if result.content.startswith(previous_content):
-                    extra_content = result.content[len(previous_content) :]
-                else:
-                    extra_content = result.content
-
-                if extra_content:
+                if content_add:
                     yield _chunk(
                         completion_id,
                         model,
-                        delta={"content": extra_content},
+                        delta={"content": content_add},
                     )
 
                 yield _chunk(
@@ -350,13 +312,14 @@ def chat_completions_real(request: Request):
 
             if kind == "error":
                 exc = event[1]
-                error_payload = {
-                    "error": {
-                        "message": f"{type(exc).__name__}: {exc}",
-                        "type": "browser_adapter_error",
+                yield "data: " + json.dumps(
+                    {
+                        "error": {
+                            "message": f"{type(exc).__name__}: {exc}",
+                            "type": "browser_adapter_error",
+                        }
                     }
-                }
-                yield "data: " + json.dumps(error_payload) + "\n\n"
+                ) + "\n\n"
                 yield "data: [DONE]\n\n"
                 return
 
@@ -376,7 +339,9 @@ def chat_completions_real(request: Request):
 def main() -> None:
     global CONFIG
 
-    parser = argparse.ArgumentParser(description="TurnToAPI OpenAI-compatible server")
+    parser = argparse.ArgumentParser(
+        description="TurnToAPI OpenAI-compatible server"
+    )
     parser.add_argument("--host", default=None)
     parser.add_argument("--port", type=int, default=None)
     parser.add_argument(
@@ -399,12 +364,7 @@ def main() -> None:
             "address, or explicitly set security.allow_public_bind=true."
         )
 
-    uvicorn.run(
-        app,
-        host=host,
-        port=port,
-        log_level="info",
-    )
+    uvicorn.run(app, host=host, port=port, log_level="info")
 
 
 if __name__ == "__main__":
